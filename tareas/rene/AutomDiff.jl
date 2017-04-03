@@ -58,7 +58,7 @@ Dual(x0)=Dual(x0,0)
 *(a::Real, b::Dual) = Dual( a*b.fun, a*b.der )
 *(a::Dual, b::Real) = Dual( b*a.fun, b*a.der )
 
-/(a::Dual, b::Dual) = Dual( a.fun/b.fun, (a.der*b.fun-a.fun*b.der)/(a.fun*a.fun) )
+/(a::Dual, b::Dual) = Dual( a.fun/b.fun, (a.der*b.fun-a.fun*b.der)/(b.fun*b.fun) )
 /(a::Dual, b::Real) = Dual( a.fun/b, a.der/b )
 
 ^(a::Dual, b::Int64) = Dual( a.fun^b, b*a.fun^(b-1)*a.der )
